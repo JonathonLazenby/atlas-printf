@@ -32,7 +32,7 @@ int _printf(const char *format, ...)
 	va_list args;
 	char *str;
 	int i;
-	const char null_str[];
+	const char null_str[] = "(null)";
 
 	count = 0;
 	va_start(args, format);	
@@ -52,7 +52,6 @@ int _printf(const char *format, ...)
 				str = va_arg(args, char *);
 				if (str == NULL)
 				{
-					null_str[] = "(null)";
 					for( i=0; i; null_str[i] != '\0'; i++)
 					{
 						_putchar(null_str[i]);
