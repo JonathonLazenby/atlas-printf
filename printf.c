@@ -32,7 +32,7 @@ int _printf(const char *format, ...)
 	va_list args;
 
 	count = 0;
-	va_start(args, format):	
+	va_start(args, format);	
 
 	while ((c = *format++) != '\0')
 	{
