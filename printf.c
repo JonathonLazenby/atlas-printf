@@ -31,6 +31,8 @@ int _printf(const char *format, ...)
 	char c;
 	va_list args;
 	char *str;
+	int i;
+	const char null_str[];
 
 	count = 0;
 	va_start(args, format);	
@@ -50,8 +52,12 @@ int _printf(const char *format, ...)
 				str = va_arg(args, char *);
 				if (str == NULL)
 				{
-					_putchar("(null)");
-					count += 6;
+					null_str = "(null)";
+					for( i=0; i; null_str[i] != '\0'; i++)
+					{
+						_putchar(null_str[i]);
+						count ++;
+					}
 				}
 				else
 				{
