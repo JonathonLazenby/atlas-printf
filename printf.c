@@ -48,10 +48,18 @@ int _printf(const char *format, ...)
 			else if (c == 's')
 			{
 				str = va_arg(args, char *);
-				while(*str != '\0')
+				if (str == NULL)
 				{
-					_putchar(*str++);
-					count++;
+					_puthchar("(null)");
+					count += 6;
+				}
+				else
+				{
+					while(*str != '\0')
+					{
+						_putchar(*str++);
+						count++;
+					}
 				}
 			}
 			else if (c == '%')
