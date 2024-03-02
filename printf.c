@@ -71,8 +71,7 @@ int _printf(const char *format, ...)
 			}
 			else if (c == '%')
 			{
-				_putchar('%');
-				count++;
+				continue;
 			}
 			else
 			{
