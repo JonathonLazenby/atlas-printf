@@ -27,68 +27,50 @@ int _putchar(char c)
 
 int _printf(const char *format, ...)
 {
-	int count;
-	char c;
 	va_list args;
+	int count = 0;
+	char c;
 	char *str;
-	int i;
-	const char null_str[] = "(null)";
 
-	count = 0;
-	va_start(args, format);	
-
-	if (format == NULL)
-		return (-1);
-	
-	while ((c = *format++) != '\0')
+	va_start(args, format);
+	while(*format)	
 	{
-		if (c == '%')
+		if(*format == '%')
 		{
-			c = *format++;
-			if (c == '\0')
-				return (count);
-			else if (c == 'c')
+			format++;
+
+			if(*format == 'c')
 			{
-				_putchar(va_arg(args, int));
+				c = (char) va_arg(args, int);
+				_putchar(c);
 				count++;
 			}
-			else if (c == 's')
+			else if(*format == 's')
 			{
-				str = va_arg(args, char *);
-				if (str == NULL)
+				str = va_arg(args, char*);
+				while(*str)
 				{
-					for( i=0; null_str[i] != '\0'; i++)
-					{
-						_putchar(null_str[i]);
-						count ++;
-					}
-				}
-				else
-				{
-					while(*str != '\0')
-					{
-						_putchar(*str++);
-						count++;
-					}
+					_putchar(*str);
+					str++;
+					count++;
 				}
 			}
-			else if (c == '%')
+			else if(*format == '%')
 			{
 				_putchar('%');
 				count++;
 			}
 			else
 			{
-				_putchar('%');
-				_putchar(c);
-				count += 2;
+
 			}
 		}
 		else
 		{
-			_putchar(c);
+			_putchar(*format);
 			count++;
 		}
+		format++;
 	}
 	va_end(args);
 	return count;
