@@ -46,7 +46,7 @@ int _printf(const char *format, ...)
 		{
 			c = *format++;
 			if (c == '\0')
-				break;
+				return (count);
 			else if (c == 'c')
 			{
 				_putchar(va_arg(args, int));
