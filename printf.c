@@ -30,6 +30,7 @@ int _printf(const char *format, ...)
 	int count;
 	char c;
 	va_list args;
+	char *str;
 
 	count = 0;
 	va_start(args, format);	
@@ -46,7 +47,12 @@ int _printf(const char *format, ...)
 			}
 			else if (c == 's')
 			{
-				count += printf("%s",va_arg(args, char*));
+				str = va_arg(args, char *);
+				while(*str != '\0')
+				{
+					_putchar(*str++);
+					count++;
+				}
 			}
 			else if (c == '%')
 			{
