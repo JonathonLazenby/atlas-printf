@@ -50,7 +50,7 @@ int _printf(const char *format, ...)
 				str = va_arg(args, char *);
 				if (str == NULL)
 				{
-					_puthchar("(null)");
+					_putchar("(null)");
 					count += 6;
 				}
 				else
