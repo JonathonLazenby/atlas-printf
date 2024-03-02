@@ -52,7 +52,7 @@ int _printf(const char *format, ...)
 				str = va_arg(args, char *);
 				if (str == NULL)
 				{
-					null_str = "(null)";
+					null_str[] = "(null)";
 					for( i=0; i; null_str[i] != '\0'; i++)
 					{
 						_putchar(null_str[i]);
