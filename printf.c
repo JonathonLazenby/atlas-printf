@@ -42,7 +42,9 @@ int _printf(const char *format, ...)
 		if (c == '%')
 		{
 			c = *format++;
-			if (c == 'c')
+			if (c == '\0')
+				break;
+			else if (c == 'c')
 			{
 				_putchar(va_arg(args, int));
 				count++;
