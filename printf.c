@@ -81,7 +81,7 @@ int _printf(const char *format, ...)
 					count += _putchar('-');
 					num = (unsigned int)INT_MIN;
 				}
-				if (num < 0)
+				else if (num < 0)
 				{
 					count += _putchar('-');
 					num = -num;
