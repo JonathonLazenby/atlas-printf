@@ -2,6 +2,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include "main.h"
+#include <limits.h>
 
 /**
  * 
@@ -75,6 +76,11 @@ int _printf(const char *format, ...)
 			else if (c == 'd' || c == 'i')
 			{
 				num = va_arg(args, int);
+				if (num == INT_MIN)
+				{
+					count += _putchar('-');
+					num = (unsigned int)INT_MIN;
+				}
 				if (num < 0)
 				{
 					count += _putchar('-');
