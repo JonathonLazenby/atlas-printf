@@ -34,6 +34,7 @@ int _printf(const char *format, ...)
 	char *str;
 	int i, num, temp, digits;
 	const char null_str[] = "(null)";
+	unsigned int abs_num;
 
 	count = 0;
 	va_start(args, format);	
@@ -79,7 +80,7 @@ int _printf(const char *format, ...)
 				if (num == INT_MIN)
 				{
 					count += _putchar('-');
-					unsigned int abs_num = (unsigned int)INT_MIN;
+					abs_num = (unsigned int)INT_MIN;
 					temp = abs_num;
 					digits = 1;
 					while (temp /= 10)
