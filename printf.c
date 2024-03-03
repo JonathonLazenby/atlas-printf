@@ -79,7 +79,19 @@ int _printf(const char *format, ...)
 				if (num == INT_MIN)
 				{
 					count += _putchar('-');
-					num = (unsigned int)INT_MIN;
+					unsigned int abs_num = (unsigned int)INT_MIN;
+					temp = abs_num;
+					digits = 1;
+					while (temp /= 10)
+					{
+						digits *= 10;
+					}
+					 while (digits)
+					{
+						count += _putchar('0' + num / digits);
+						num %= digits;
+						digits /= 10;
+					}
 				}
 				else if (num < 0)
 				{
