@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 	char c;
 	va_list args;
 	char *str;
-	int i;
+	int i, num, temp, digits;
 	const char null_str[] = "(null)";
 
 	count = 0;
@@ -70,6 +70,25 @@ int _printf(const char *format, ...)
 						_putchar(*str++);
 						count++;
 					}
+				}
+			}
+			else if (c == 'd' || c == 'i')
+			{
+				num = va_arg(args, int);
+				if (num < 0)
+				{
+					count += _putchar('-');
+					num = -num;
+				}
+				temp = num;
+				digits = 1;
+				while (temp /= 10)
+					digits *= 10;
+				while (digits)
+				{
+					count += _putchar('0' + num / digit);
+					num %= digits;
+					digits /= 10;
 				}
 			}
 			else if (c == '%')
