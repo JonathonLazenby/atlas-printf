@@ -86,7 +86,7 @@ int _printf(const char *format, ...)
 					digits *= 10;
 				while (digits)
 				{
-					count += _putchar('0' + num / digit);
+					count += _putchar('0' + num / digits);
 					num %= digits;
 					digits /= 10;
 				}
